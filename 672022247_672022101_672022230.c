@@ -89,6 +89,62 @@ current_room = current_room->next;
 }
 printf("Nomor kamar tidak ditemukan.\n");
 }
+void sort_rooms() {
+    if (head == NULL) {
+        printf("Belum ada kamar yang ditambahkan.\n");
+        return;
+    }
+    struct room *current_room = head;
+    struct room *index = NULL;
+    int temp_room_number, temp_price, temp_availability;
+    char temp_room_type[20];
+
+    while (current_room != NULL) {
+        index = current_room->next;
+
+        while (index != NULL) {
+            if (current_room->room_number > index->room_number) {
+                temp_room_number = current_room->room_number;
+                current_room->room_number = index->room_number;
+                index->room_number = temp_room_number;
+
+                strcpy(temp_room_type, current_room->room_type);
+                strcpy(current_room->room_type, index->room_type);
+                strcpy(index->room_type, temp_room_type);
+
+                temp_price = current_room->price;
+                current_room->price = index->price;
+                index->price = temp_price;
+
+                temp_availability = current_room->availability;
+                current_room->availability = index->availability;
+                index->availability = temp_availability;
+            }
+            index = index->next;
+        }
+        current_room = current_room->next;
+    }
+    printf("Daftar kamar berhasil diurutkan berdasarkan nomor kamar.\n");
+}
+void search_room() {
+    int room_number;
+    printf("Masukkan nomor kamar yang ingin dicari: ");
+    scanf("%d", &room_number);
+
+    struct room *current_room = head;
+    while (current_room != NULL) {
+        if (current_room->room_number == room_number) {
+            printf("Nomor Kamar: %d\n", current_room->room_number);
+            printf("Tipe Kamar: %s\n", current_room->room_type);
+            printf("Harga: %d\n", current_room->price);
+            printf("Ketersediaan: %s\n", current_room->availability == 1 ? "Tersedia" : "Tidak Tersedia");
+            printf("\n");
+            return;
+        }
+        current_room = current_room->next;
+    }
+    printf("Kamar tidak ditemukan.\n");
+}
 
 int main() {
 int choice;
@@ -118,10 +174,10 @@ case 4:
 update_room();
             break;
         case 5:
-
+sort_room();
             break;
         case 6:
-
+search_room();
             break;
         case 7:
 

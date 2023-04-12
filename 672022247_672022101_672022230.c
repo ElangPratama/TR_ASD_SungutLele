@@ -12,6 +12,21 @@ struct room {
 };
 // Linked list untuk menyimpan daftar kamar hotel
 struct room *head = NULL;
+// Fungsi untuk menambah kamar baru ke linked list
+void add_room() {
+    struct room *new_room = (struct room *) malloc(sizeof(struct room));
+    printf("Masukkan nomor kamar: ");
+    scanf("%d", &new_room->room_number);
+    printf("Masukkan tipe kamar: ");
+    scanf("%s", new_room->room_type);
+    printf("Masukkan harga: ");
+    scanf("%d", &new_room->price);
+    printf("Masukkan ketersediaan (1=Tersedia, 0=Tidak Tersedia): ");
+    scanf("%d", &new_room->availability);
+    new_room->next = head;
+    head = new_room;
+    printf("Kamar berhasil ditambahkan!\n");
+}
 int main() {
 int choice;
 do {
@@ -28,7 +43,7 @@ printf("Masukkan pilihan Anda: ");
 scanf("%d", &choice);
 switch (choice) {
 case 1:
-
+add_room();
 break;
 case 2:
 

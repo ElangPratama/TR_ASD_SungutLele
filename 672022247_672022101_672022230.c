@@ -27,6 +27,27 @@ void add_room() {
     head = new_room;
     printf("Kamar berhasil ditambahkan!\n");
 }
+
+// Fungsi untuk menampilkan daftar kamar hotel
+void show_rooms() {
+    if (head == NULL) {
+        printf("Belum ada kamar yang ditambahkan.\n");
+        return;
+    }
+    printf("Daftar kamar:\n");
+    struct room *current_room = head;
+    while (current_room != NULL) {
+        printf("Nomor Kamar: %d\n", current_room->room_number);
+        printf("Tipe Kamar: %s\n", current_room->room_type);
+        printf("Harga: %d\n", current_room->price);
+        printf("Ketersediaan: %s\n", current_room->availability == 1 ? "Tersedia" : "Tidak Tersedia");
+        printf("\n");
+        current_room = current_room->next;
+    }
+}
+
+
+
 int main() {
 int choice;
 do {
@@ -46,7 +67,7 @@ case 1:
 add_room();
 break;
 case 2:
-
+show_rooms();
 break;
 case 3:
 

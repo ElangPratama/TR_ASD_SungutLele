@@ -46,7 +46,49 @@ void show_rooms() {
     }
 }
 
+void delete_room() {
+    int room_number;
+    printf("Masukkan nomor kamar yang akan dihapus: ");
+    scanf("%d", &room_number);
+    struct room *current_room = head;
+    struct room *previous_room = NULL;
+    while (current_room != NULL) {
+        if (current_room->room_number == room_number) {
+            if (previous_room == NULL) {
+                head = current_room->next;
+            } else {
+                previous_room->next = current_room->next;
+            }
+            free(current_room);
+            printf("Kamar berhasil dihapus!\n");
+            return;
+        }
+        previous_room = current_room;
+        current_room = current_room->next;
+    }
+    printf("Nomor kamar tidak ditemukan.\n");
+}
 
+void update_room() {
+    int room_number;
+    printf("Masukkan nomor kamar yang akan diubah: ");
+    scanf("%d", &room_number);
+    struct room *current_room = head;
+    while (current_room != NULL) {
+        if (current_room->room_number == room_number) {
+            printf("Masukkan tipe kamar baru: ");
+            scanf("%s", current_room->room_type);
+            printf("Masukkan harga baru: ");
+            scanf("%d", &current_room->price);
+            printf("Masukkan ketersediaan baru (1=Tersedia,0=Tidak Tersedia): ");
+scanf("%d", &current_room->availability);
+printf("Informasi kamar berhasil diubah!\n");
+return;
+}
+current_room = current_room->next;
+}
+printf("Nomor kamar tidak ditemukan.\n");
+}
 
 int main() {
 int choice;
@@ -70,10 +112,10 @@ case 2:
 show_rooms();
 break;
 case 3:
-
+delete_room();
 break;
 case 4:
-
+update_room();
             break;
         case 5:
 

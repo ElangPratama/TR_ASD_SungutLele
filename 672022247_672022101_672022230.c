@@ -1,95 +1,57 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-int main(){
-    int pilih,menu;
-
-menu:
-printf("M E N U  H O T E L\n\n");
-
-printf("1.Tambah Kamar\n");
-printf("2.LIhat Daftar Kamar\n");
-printf("3.Hapus Daftar Kamar\n");
-printf("4.Update Kamar\n");
-printf("5.Sorting Kamar\n");
-printf("6.Cari Kamar\n");
-printf("7.EXIT\n");
-
-printf("pilihanmu:");
-scanf("%d",&pilih);
-
-switch(pilih){
-
+// Struktur data untuk kamar hotel
+struct room {
+    int room_number;
+    char room_type[20];
+    int price;
+    int availability;
+    struct room *next;
+};
+// Linked list untuk menyimpan daftar kamar hotel
+struct room *head = NULL;
+int main() {
+int choice;
+do {
+printf("\n");
+printf("Menu:\n");
+printf("1. Tambah kamar baru\n");
+printf("2. Tampilkan daftar kamar\n");
+printf("3. Hapus kamar\n");
+printf("4. Ubah informasi kamar\n");
+printf("5. Urutkan daftar kamar\n");
+printf("6. Cari kamar\n");
+printf("7. Keluar\n");
+printf("Masukkan pilihan Anda: ");
+scanf("%d", &choice);
+switch (choice) {
 case 1:
 
-printf("wh");
-getch();
-system("cls");
-goto menu;
-
+break;
 case 2:
 
-printf("wh");
-getch();
-system("cls");
-goto menu;
-
-
+break;
 case 3:
 
-printf("wh");
-getch();
-system("cls");
-goto menu;
-
-
-
+break;
 case 4:
 
-printf("wh");
-getch();
-system("cls");
-goto menu;
+            break;
+        case 5:
 
+            break;
+        case 6:
 
+            break;
+        case 7:
 
-case 5:
+            break;
+        default:
 
-printf("wh");
-getch();
-system("cls");
-goto menu;
-
-
-
-case 6:
-
-printf("wh");
-getch();
-system("cls");
-goto menu;
-
-
-
-case 7:
-system("out");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
-
-
-
-
+            break;
+    }
+}while (choice!=7);
+return 0;
 }
